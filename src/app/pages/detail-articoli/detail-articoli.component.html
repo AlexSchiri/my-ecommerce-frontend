@@ -1,0 +1,188 @@
+
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+<meta name="description" content="Porfolio Page with Tabbed Content"/>
+
+<title>{{articolo.descrizione}}</title>
+
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet"/>
+
+
+<style>
+.nav-link, .nav-link:active, nav-link:visited {
+border: none !important;
+outline: 0;
+}
+</style>
+</head>
+
+<body>
+
+<main class="container">
+<section class="tab-content">
+
+<div class="tab-pane active" id="project1" role="tabpanel" aria-labelledby="project1-tab">
+<h1 class="my-4">{{articolo.descrizione}}
+<!-- <small>Codice: {{articolo.codArt}}</small> -->
+</h1>
+<div class="row">
+<div class="col-md-8">
+<img class="img-fluid" src="{{articolo.imageUrl}}" alt="Red">
+</div>
+<div class="col-md-4">
+<h3 class="my-3">cod. {{articolo.codArt}}</h3>
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+Nam viverra euismod odio, gravida pellentesque urna varius vitae. 
+Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. 
+Mauris ultricies, justo eu convallis placerat, felis enim.
+
+<div class="w-100" style="margin-top:20px;">
+  <div class="form-group">
+    <label for="inputNumber" class="input-number-label active">Add to Cart</label>
+    <div class="input-group input-number">
+      <input type="number" class="form-control" data-bs-input id="inputNumber" [(ngModel)]="inputNumber" name="inputNumber" value="1" step="any" />
+      <span class="input-group-text align-buttons flex-column">
+        <button class="input-number-add">
+          <span class="visually-hidden">Aumenta valore</span>
+        </button>
+        <button class="input-number-sub">
+          <span class="visually-hidden">Diminuisci valore</span>
+        </button>       
+      </span>
+    </div>
+  </div>
+  <button type="submit" (click)="addToCart(articolo.codArt)">
+    Add to cart
+  </button>
+</div>
+
+
+
+<h3 class="my-3">Project Details</h3>
+<ul>
+<li>Um: {{articolo.um}}</li>
+<li>Data creazione: {{articolo.dataCreazione}}</li>
+<!-- <li>Barcode: {{articolo.ean[0].barcode}}</li> -->
+<li>Categoria: {{articolo.categoria}}</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div class="tab-pane fade" id="project2" role="tabpanel" aria-labelledby="project2-tab">
+<h1 class="my-4">Page Heading 2
+<small>Secondary Text</small>
+</h1>
+<div class="row">
+<div class="col-md-8">
+<img class="img-fluid" src="https://i.twic.pics/v1/placeholder:750x500:fff/f90" alt="Orange">
+</div>
+<div class="col-md-4">
+<h3 class="my-3">Project Two Description</h3>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.
+
+
+<h3 class="my-3">Project Details</h3>
+<ul>
+<li>Lorem Ipsum</li>
+<li>Dolor Sit Amet</li>
+<li>Consectetur</li>
+<li>Adipiscing Elit</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div class="tab-pane fade" id="project3" role="tabpanel" aria-labelledby="project3-tab">
+<h1 class="my-4">Page Heading 3
+<small>Secondary Text</small>
+</h1>
+<div class="row">
+<div class="col-md-8">
+<img class="img-fluid" src="https://i.twic.pics/v1/placeholder:750x500:fff/0f0" alt="Green">
+</div>
+<div class="col-md-4">
+<h3 class="my-3">Project Three Description</h3>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.
+
+
+<h3 class="my-3">Project Details</h3>
+<ul>
+<li>Lorem Ipsum</li>
+<li>Dolor Sit Amet</li>
+<li>Consectetur</li>
+<li>Adipiscing Elit</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div class="tab-pane fade" id="project4" role="tabpanel" aria-labelledby="project4-tab">
+<h1 class="my-4">Page Heading 4
+<small>Secondary Text</small>
+</h1>
+<div class="row">
+<div class="col-md-8">
+<img class="img-fluid" src="https://i.twic.pics/v1/placeholder:750x500:fff/00f" alt="Blue">
+</div>
+<div class="col-md-4">
+<h3 class="my-3">Project Four Description</h3>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.
+
+
+<h3 class="my-3">Project Details</h3>
+<ul>
+<li>Lorem Ipsum</li>
+<li>Dolor Sit Amet</li>
+<li>Consectetur</li>
+<li>Adipiscing Elit</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<a class="btn btn-primary" routerLink="/gestart/{{articolo.codArt}}" role="button">Modifica articolo</a>
+
+
+<h3 class="my-4">More Projects</h3>
+
+<nav class="row nav nav-tabs" id="myTab" role="tablist">
+
+<div class="col-md-3 col-sm-6 mb-4 active nav-item" role="presentation">
+
+<img class="img-fluid" src="https://i.twic.pics/v1/placeholder:250x150:fff/f00" alt="Tab 1"/>
+
+</div>
+
+<div class="col-md-3 col-sm-6 mb-4 nav-item" role="presentation">
+
+<img class="img-fluid" src="https://i.twic.pics/v1/placeholder:250x150:fff/f60" alt="Tab 2"/>
+
+</div>
+
+<div class="col-md-3 col-sm-6 mb-4 nav-item" role="presentation">
+
+<img class="img-fluid" src="https://i.twic.pics/v1/placeholder:250x150:fff/0f0" alt="Tab 3"/>
+
+</div>
+
+<div class="col-md-3 col-sm-6 mb-4 nav-item" role="presentation">
+
+<img class="img-fluid" src="https://i.twic.pics/v1/placeholder:250x150:fff/00f" alt="Tab 4"/>
+
+</div>
+</nav>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

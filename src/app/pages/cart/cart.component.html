@@ -1,0 +1,44 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div style ="margin-top: 30px;" class="container padding-bottom-3x mb-1">
+    
+        <!-- Shopping Cart-->
+    <div class="table-responsive shopping-cart">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th class="text-center">Quantity</th>
+                    <th class="text-center">Subtotal</th>
+                    <th class="text-center">Discount</th>
+                    <th class="text-center"><a class="btn btn-sm btn-outline-danger" (click) = "deleteCart()">Clear Cart</a></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of cartProducts">
+                    <td>
+                        <div class="product-item">
+                            <img src="{{item.imageUrl}}" alt="Product" class="img-thumbnail w-25">
+                            <div class="product-info">
+                                <h4 class="product-title"><a routerLink="/articolo/{{item.codart}}">{{item.codart}}</a></h4>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <div class="count-input">
+                            <input type = "number" value={{item.qty}} (change)="UpdateQty(item.codart, $event, item)">
+                        </div>
+                    </td>
+                    <td class="text-center text-lg text-medium">$43.90</td>
+                    <td class="text-center text-lg text-medium">$0.00</td>
+                    <td class="text-center"><a class="remove-from-cart" data-toggle="tooltip" title="" data-original-title="Remove item" (click) = "RemoveItem(item.codart, item.id)"><i class="fa fa-trash"></i></a></td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+
+    <div style="margin-bottom: 80px;" class="shopping-cart-footer">
+        <div class="column"><a class="btn btn-outline-secondary" href="#"><i class="icon-arrow-left"></i>&nbsp;Back to Shopping</a></div>
+        <div style="margin-top: 30px;" class="column"><a class="btn btn-success" href="#">Checkout</a></div>
+    </div>
+</div>

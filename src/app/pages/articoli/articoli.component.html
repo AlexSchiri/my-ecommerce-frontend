@@ -1,0 +1,91 @@
+<section class="content-main">
+
+  <div class="content-header">
+    <h2 class="content-title">Lista Prodotti</h2>
+    <div>
+      <button class="btn btn-primary" (click)="Modifica('')">
+        <i class="material-icons md-plus"></i>
+        Nuovo
+      </button>
+    </div>
+  </div>
+  <div class="card mb-4">
+    <!-- Inizio Header -->
+    <header class="card-header">
+      <div class="row gx-3">
+					<div class="col-lg-4 col-md-6 me-auto">
+						<input type="text" placeholder="Cerca..." class="form-control" [(ngModel)] = "filter" (keyup.enter)="refresh()" >
+					</div>
+					
+				</div>
+    </header> 
+    <!-- Fine Header -->
+
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+							<th scope="col">CodArt</th>
+							<th scope="col">Descrizione</th>
+							<th scope="col">Um</th>
+							<th scope="col">Pezzi</th>
+              <th scope="col">Peso</th>
+              <th scope="col">Prezzo</th>
+              <th scope="col">Status</th>
+							<th scope="col">Data</th>
+							<th scope="col" class="text-end"> Azione </th>
+						</tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let articolo of articoli$ | paginate: { itemsPerPage: righe, currentPage: pagina}">
+              <td class="tbl-string">{{articolo.codArt}}</td>
+              <td class="tbl-string">{{articolo.descrizione}}</td>
+              <td class="tbl-string">{{articolo.um}}</td>
+              <td class="tbl-string">{{articolo.pzCart}}</td>
+              <td class="tbl-string">{{articolo.pesoNetto}}</td>
+              <td class="tbl-string">{{articolo.prezzo | currency : 'EUR'}}</td>
+              <td class="tbl-string infoBadge">
+                <div [ngStyle]="{'background-color': articolo.idStatoArt === '1' ? 'green' : 'red'}">{{articolo.desStatoArt}}</div>
+              </td>
+              <td class="tbl-string">{{articolo.dataCreazione | date : 'dd-MM-YYYY'}}</td>
+
+              <td class="text-end">
+                <button (click)="Elimina(articolo.codArt)" class="btn btn-light text-danger">Elimina</button>
+								<div class="dropdown">
+									<button data-bs-toggle="dropdown" class="btn btn-light">
+                    <i class="material-icons md-more_horiz">Azioni</i>
+                  </button>
+                  
+									<ul class="dropdown-menu">
+										<li><a class="dropdown-item" (click)="Dettaglio(articolo)">Dettaglio</a></li>
+										<li><a class="dropdown-item" (click)="Modifica(articolo.codArt)">Modifica</a></li>
+                    <li><a class="dropdown-item" (click)="VediPrezzi(articolo.codArt)">Listini</a></li>
+									</ul>
+								</div> <!-- dropdown //end -->
+							</td>
+
+            </tr>
+          </tbody>
+        </table>
+
+        <nav class="float-end mt-3" aria-label="Page navigation">
+          <pagination-controls
+            class="my-pagination"
+            (pageChange)="pagina = $event"
+            previousLabel="Precedente"
+            nextLabel="Successivo">
+          </pagination-controls>
+        </nav>
+
+        <div class="alert alert-danger" role="alert" *ngIf="errore">
+          {{errore}}
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+</section>
+
